@@ -9,9 +9,9 @@
 
 ## Compatilibility
 
-[x] <b>three.js</b> r.148
+- <b>three.js</b> r.148
 
-[x]  <b>three-engine</b> 1.0.31
+- <b>three-engine</b> 1.0.31
 
 <br>
 Creator: <b>Artur Brytkowski</b> 
