@@ -1,0 +1,13 @@
+{
+  "name": "three-engine",
+  "version": "1.0.31",
+  "description": "TypeScript definitions for three-engine",
+  "main": "",
+  "types": "index.d.ts",
+  "scripts": {},
+  "author": "Artur Brytkowski",
+  "license": "MIT",
+  "dependencies": {
+    "@types/three": "^0.148.0"
+  }
+}
