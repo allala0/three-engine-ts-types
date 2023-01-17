@@ -1,288 +1,290 @@
-import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
-
-/**
- * Orbit controls allow the camera to orbit around a target.
- * @param object - The camera to be controlled. The camera must not
- * be a child of another object, unless that object is the scene itself.
- * @param domElement - The HTML element used for
- * event listeners.
- */
-export class OrbitControls {
-    constructor(object: Camera, domElement?: HTMLElement);
-
-    // ZOOM-TO-CURSOR
-    cursorScreen: Vector3;
-    cursorWorld: Vector3;
-    enableZoomToCursor: boolean;
-    adjustmentAfterZoomNeeded: boolean;
-    maxTargetDistanceFromOrigin: number;
-
-    adjustAfterZoom: () => void;
-    setCursorWorld: () => void;
-    //
+declare module 'three-engine/tools/controls/OrbitControls'{
+    import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
 
     /**
-     * The camera being controlled.
+     * Orbit controls allow the camera to orbit around a target.
+     * @param object - The camera to be controlled. The camera must not
+     * be a child of another object, unless that object is the scene itself.
+     * @param domElement - The HTML element used for
+     * event listeners.
      */
-    object: Camera;
+    export class OrbitControls {
+        constructor(object: Camera, domElement?: HTMLElement);
 
-    /**
-     * The HTMLElement used to listen for mouse / touch events.
-     * This must be passed in the constructor;
-     * changing it here will not set up new event listeners.
-     */
-    domElement: HTMLElement | Document;
+        // ZOOM-TO-CURSOR
+        cursorScreen: Vector3;
+        cursorWorld: Vector3;
+        enableZoomToCursor: boolean;
+        adjustmentAfterZoomNeeded: boolean;
+        maxTargetDistanceFromOrigin: number;
 
-    /**
-     * When set to `false`, the controls will not respond to user input.
-     * @default true
-     */
-    enabled: boolean;
+        adjustAfterZoom: () => void;
+        setCursorWorld: () => void;
+        //
 
-    /**
-     * The focus point of the controls, the .object orbits around this.
-     * It can be updated manually at any point to change the focus
-     * of the controls.
-     */
-    target: Vector3;
+        /**
+         * The camera being controlled.
+         */
+        object: Camera;
 
-    /** @deprecated */
-    center: Vector3;
+        /**
+         * The HTMLElement used to listen for mouse / touch events.
+         * This must be passed in the constructor;
+         * changing it here will not set up new event listeners.
+         */
+        domElement: HTMLElement | Document;
 
-    /**
-     * How far you can dolly in ( PerspectiveCamera only ).
-     * @default 0
-     */
-    minDistance: number;
+        /**
+         * When set to `false`, the controls will not respond to user input.
+         * @default true
+         */
+        enabled: boolean;
 
-    /**
-     * How far you can dolly out ( PerspectiveCamera only ).
-     * @default Infinity
-     */
-    maxDistance: number;
+        /**
+         * The focus point of the controls, the .object orbits around this.
+         * It can be updated manually at any point to change the focus
+         * of the controls.
+         */
+        target: Vector3;
 
-    /**
-     * How far you can zoom in ( OrthographicCamera only ).
-     * @default 0
-     */
-    minZoom: number;
+        /** @deprecated */
+        center: Vector3;
 
-    /**
-     * How far you can zoom out ( OrthographicCamera only ).
-     * @default Infinity
-     */
-    maxZoom: number;
+        /**
+         * How far you can dolly in ( PerspectiveCamera only ).
+         * @default 0
+         */
+        minDistance: number;
 
-    /**
-     * How far you can orbit vertically, lower limit.
-     * Range is 0 to Math.PI radians.
-     * @default 0
-     */
-    minPolarAngle: number;
+        /**
+         * How far you can dolly out ( PerspectiveCamera only ).
+         * @default Infinity
+         */
+        maxDistance: number;
 
-    /**
-     * How far you can orbit vertically, upper limit.
-     * Range is 0 to Math.PI radians.
-     * @default Math.PI.
-     */
-    maxPolarAngle: number;
+        /**
+         * How far you can zoom in ( OrthographicCamera only ).
+         * @default 0
+         */
+        minZoom: number;
 
-    /**
-     * How far you can orbit horizontally, lower limit.
-     * If set, the interval [ min, max ]
-     * must be a sub-interval of [ - 2 PI, 2 PI ],
-     * with ( max - min < 2 PI ).
-     * @default Infinity
-     */
-    minAzimuthAngle: number;
+        /**
+         * How far you can zoom out ( OrthographicCamera only ).
+         * @default Infinity
+         */
+        maxZoom: number;
 
-    /**
-     * How far you can orbit horizontally, upper limit.
-     * If set, the interval [ min, max ] must be a sub-interval
-     * of [ - 2 PI, 2 PI ], with ( max - min < 2 PI ).
-     * @default Infinity
-     */
-    maxAzimuthAngle: number;
+        /**
+         * How far you can orbit vertically, lower limit.
+         * Range is 0 to Math.PI radians.
+         * @default 0
+         */
+        minPolarAngle: number;
 
-    /**
-     * Set to true to enable damping (inertia), which can
-     * be used to give a sense of weight to the controls.
-     * Note that if this is enabled, you must call
-     * .update () in your animation loop.
-     * @default false
-     */
-    enableDamping: boolean;
+        /**
+         * How far you can orbit vertically, upper limit.
+         * Range is 0 to Math.PI radians.
+         * @default Math.PI.
+         */
+        maxPolarAngle: number;
 
-    /**
-     * The damping inertia used if .enableDamping is set to true.
-     * Note that for this to work,
-     * you must call .update () in your animation loop.
-     * @default 0.05
-     */
-    dampingFactor: number;
+        /**
+         * How far you can orbit horizontally, lower limit.
+         * If set, the interval [ min, max ]
+         * must be a sub-interval of [ - 2 PI, 2 PI ],
+         * with ( max - min < 2 PI ).
+         * @default Infinity
+         */
+        minAzimuthAngle: number;
 
-    /**
-     * Enable or disable zooming (dollying) of the camera.
-     * @default true
-     */
-    enableZoom: boolean;
+        /**
+         * How far you can orbit horizontally, upper limit.
+         * If set, the interval [ min, max ] must be a sub-interval
+         * of [ - 2 PI, 2 PI ], with ( max - min < 2 PI ).
+         * @default Infinity
+         */
+        maxAzimuthAngle: number;
 
-    /**
-     * Speed of zooming / dollying.
-     * @default 1
-     */
-    zoomSpeed: number;
+        /**
+         * Set to true to enable damping (inertia), which can
+         * be used to give a sense of weight to the controls.
+         * Note that if this is enabled, you must call
+         * .update () in your animation loop.
+         * @default false
+         */
+        enableDamping: boolean;
 
-    /**
-     * Enable or disable horizontal and
-     * vertical rotation of the camera.
-     * Note that it is possible to disable a single axis
-     * by setting the min and max of the polar angle or
-     * azimuth angle to the same value, which will cause
-     * the vertical or horizontal rotation to be fixed at that value.
-     * @default true
-     */
-    enableRotate: boolean;
+        /**
+         * The damping inertia used if .enableDamping is set to true.
+         * Note that for this to work,
+         * you must call .update () in your animation loop.
+         * @default 0.05
+         */
+        dampingFactor: number;
 
-    /**
-     * Speed of rotation.
-     * @default 1
-     */
-    rotateSpeed: number;
+        /**
+         * Enable or disable zooming (dollying) of the camera.
+         * @default true
+         */
+        enableZoom: boolean;
 
-    /**
-     * Enable or disable camera panning.
-     * @default true
-     */
-    enablePan: boolean;
+        /**
+         * Speed of zooming / dollying.
+         * @default 1
+         */
+        zoomSpeed: number;
 
-    /**
-     * Speed of panning.
-     * @default 1
-     */
-    panSpeed: number;
+        /**
+         * Enable or disable horizontal and
+         * vertical rotation of the camera.
+         * Note that it is possible to disable a single axis
+         * by setting the min and max of the polar angle or
+         * azimuth angle to the same value, which will cause
+         * the vertical or horizontal rotation to be fixed at that value.
+         * @default true
+         */
+        enableRotate: boolean;
 
-    /**
-     * Defines how the camera's position is translated when panning.
-     * If true, the camera pans in screen space. Otherwise,
-     * the camera pans in the plane orthogonal to the camera's
-     * up direction. Default is true for OrbitControls; false for MapControls.
-     * @default true
-     */
-    screenSpacePanning: boolean;
+        /**
+         * Speed of rotation.
+         * @default 1
+         */
+        rotateSpeed: number;
 
-    /**
-     * How fast to pan the camera when the keyboard is used.
-     * Default is 7.0 pixels per keypress.
-     * @default 7
-     */
-    keyPanSpeed: number;
+        /**
+         * Enable or disable camera panning.
+         * @default true
+         */
+        enablePan: boolean;
 
-    /**
-     * Set to true to automatically rotate around the target.
-     * Note that if this is enabled, you must call
-     * .update () in your animation loop.
-     */
-    autoRotate: boolean;
+        /**
+         * Speed of panning.
+         * @default 1
+         */
+        panSpeed: number;
 
-    /**
-     * How fast to rotate around the target if .autoRotate is true.
-     * Default is 2.0, which equates to 30 seconds per orbit at 60fps.
-     * Note that if .autoRotate is enabled, you must call
-     * .update () in your animation loop.
-     * @default 2
-     */
-    autoRotateSpeed: number;
+        /**
+         * Defines how the camera's position is translated when panning.
+         * If true, the camera pans in screen space. Otherwise,
+         * the camera pans in the plane orthogonal to the camera's
+         * up direction. Default is true for OrbitControls; false for MapControls.
+         * @default true
+         */
+        screenSpacePanning: boolean;
 
-    /**
-     * This object contains references to the keycodes for controlling
-     * camera panning. Default is the 4 arrow keys.
-     */
-    keys: { LEFT: string; UP: string; RIGHT: string; BOTTOM: string };
+        /**
+         * How fast to pan the camera when the keyboard is used.
+         * Default is 7.0 pixels per keypress.
+         * @default 7
+         */
+        keyPanSpeed: number;
 
-    /**
-     * This object contains references to the mouse actions used
-     * by the controls.
-     */
-    mouseButtons: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>;
+        /**
+         * Set to true to automatically rotate around the target.
+         * Note that if this is enabled, you must call
+         * .update () in your animation loop.
+         */
+        autoRotate: boolean;
 
-    /**
-     * This object contains references to the touch actions used by
-     * the controls.
-     */
-    touches: Partial<{ ONE: TOUCH; TWO: TOUCH }>;
+        /**
+         * How fast to rotate around the target if .autoRotate is true.
+         * Default is 2.0, which equates to 30 seconds per orbit at 60fps.
+         * Note that if .autoRotate is enabled, you must call
+         * .update () in your animation loop.
+         * @default 2
+         */
+        autoRotateSpeed: number;
 
-    /**
-     * Used internally by the .saveState and .reset methods.
-     */
-    target0: Vector3;
+        /**
+         * This object contains references to the keycodes for controlling
+         * camera panning. Default is the 4 arrow keys.
+         */
+        keys: { LEFT: string; UP: string; RIGHT: string; BOTTOM: string };
 
-    /**
-     * Used internally by the .saveState and .reset methods.
-     */
-    position0: Vector3;
+        /**
+         * This object contains references to the mouse actions used
+         * by the controls.
+         */
+        mouseButtons: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>;
 
-    /**
-     * Used internally by the .saveState and .reset methods.
-     */
-    zoomO: number;
+        /**
+         * This object contains references to the touch actions used by
+         * the controls.
+         */
+        touches: Partial<{ ONE: TOUCH; TWO: TOUCH }>;
 
-    /**
-     * Update the controls. Must be called after any manual changes
-     * to the camera's transform, or in the update loop if .autoRotate
-     * or .enableDamping are set.
-     */
-    update(): boolean;
+        /**
+         * Used internally by the .saveState and .reset methods.
+         */
+        target0: Vector3;
 
-    /**
-     * Adds key event listeners to the given DOM element. `window`
-     * is a recommended argument for using this method.
-     * @param domElement
-     */
-    listenToKeyEvents(domElement: HTMLElement | Window): void;
+        /**
+         * Used internally by the .saveState and .reset methods.
+         */
+        position0: Vector3;
 
-    /**
-     * Save the current state of the controls. This can later be
-     * recovered with .reset.
-     */
-    saveState(): void;
+        /**
+         * Used internally by the .saveState and .reset methods.
+         */
+        zoomO: number;
 
-    /**
-     * Reset the controls to their state from either the last time
-     * the .saveState was called, or the initial state.
-     */
-    reset(): void;
+        /**
+         * Update the controls. Must be called after any manual changes
+         * to the camera's transform, or in the update loop if .autoRotate
+         * or .enableDamping are set.
+         */
+        update(): boolean;
 
-    /**
-     * Remove all the event listeners.
-     */
-    dispose(): void;
+        /**
+         * Adds key event listeners to the given DOM element. `window`
+         * is a recommended argument for using this method.
+         * @param domElement
+         */
+        listenToKeyEvents(domElement: HTMLElement | Window): void;
 
-    /**
-     * Get the current vertical rotation, in radians.
-     */
-    getPolarAngle(): number;
+        /**
+         * Save the current state of the controls. This can later be
+         * recovered with .reset.
+         */
+        saveState(): void;
 
-    /**
-     * Get the current horizontal rotation, in radians.
-     */
-    getAzimuthalAngle(): number;
+        /**
+         * Reset the controls to their state from either the last time
+         * the .saveState was called, or the initial state.
+         */
+        reset(): void;
 
-    /**
-     * Returns the distance from the camera to the target.
-     */
-    getDistance(): number;
+        /**
+         * Remove all the event listeners.
+         */
+        dispose(): void;
 
-    // EventDispatcher mixins
-    addEventListener(type: string, listener: (event: any) => void): void;
+        /**
+         * Get the current vertical rotation, in radians.
+         */
+        getPolarAngle(): number;
 
-    hasEventListener(type: string, listener: (event: any) => void): boolean;
+        /**
+         * Get the current horizontal rotation, in radians.
+         */
+        getAzimuthalAngle(): number;
 
-    removeEventListener(type: string, listener: (event: any) => void): void;
+        /**
+         * Returns the distance from the camera to the target.
+         */
+        getDistance(): number;
 
-    dispatchEvent(event: { type: string; target: any }): void;
-}
+        // EventDispatcher mixins
+        addEventListener(type: string, listener: (event: any) => void): void;
 
-export class MapControls extends OrbitControls {
-    constructor(object: Camera, domElement?: HTMLElement);
+        hasEventListener(type: string, listener: (event: any) => void): boolean;
+
+        removeEventListener(type: string, listener: (event: any) => void): void;
+
+        dispatchEvent(event: { type: string; target: any }): void;
+    }
+
+    export class MapControls extends OrbitControls {
+        constructor(object: Camera, domElement?: HTMLElement);
+    }
 }

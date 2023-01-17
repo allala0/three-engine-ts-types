@@ -1,28 +1,30 @@
-import Transition from './Transition';
+declare module 'three-engine/tools/transitions/TransitionChain'{
+    import Transition from './Transition';
 
-interface Parameters{
-    loop?: boolean;
-    autoplay?: boolean;
-}
+    interface Parameters{
+        loop?: boolean;
+        autoplay?: boolean;
+    }
 
-export default class TransitionChain{
-    constructor(transitions: Transition[], parameters?: Parameters);
+    export default class TransitionChain{
+        constructor(transitions: Transition[], parameters?: Parameters);
 
-    transitions: Transition[];
-    currentIndex: number;
+        transitions: Transition[];
+        currentIndex: number;
 
-    loop: boolean;
-    autoplay: boolean;
+        loop: boolean;
+        autoplay: boolean;
 
-    paused: boolean;
+        paused: boolean;
 
-    play(): this;
-    pause(): this;
-    toggle(): this;
+        play(): this;
+        pause(): this;
+        toggle(): this;
 
-    get ended(): boolean;
+        get ended(): boolean;
 
-    reset(): this;
-    skip(): this;
-    update(): void;
+        reset(): this;
+        skip(): this;
+        update(): void;
+    }
 }
