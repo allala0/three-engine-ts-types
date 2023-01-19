@@ -5,13 +5,18 @@
 <br>
 
 ## How to install
-    npm install @types/three-engine
+    git clone https://github.com/allala0/three-engine-ts-types.git
+    
+    move "three-engine-ts-types" folder to your project source code folder.
+
+## TODO
+- [ ] **installation with "npm install @types/three-engine"**
 
 ## Compatilibility
 
 - <b>three.js</b> r.148
 
-- <b>three-engine</b> 1.0.35
+- <b>three-engine</b> 1.0.36
 
 <br>
 Creator: <b>Artur Brytkowski</b> 
