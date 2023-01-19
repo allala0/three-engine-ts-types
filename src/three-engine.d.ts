@@ -1,5 +1,3 @@
-
-// declare module 'three';
 declare module 'three-engine'{
     import {
         Vector2,
