@@ -11,7 +11,7 @@
 
 - <b>three.js</b> r.148
 
-- <b>three-engine</b> 1.0.31
+- <b>three-engine</b> 1.0.35
 
 <br>
 Creator: <b>Artur Brytkowski</b> 

@@ -1,6 +1,6 @@
 {
-  "name": "three-engine-ts-types",
-  "version": "1.0.33",
+  "name": "three-engine",
+  "version": "1.0.35",
   "description": "TypeScript definitions for three-engine",
   "main": "",
   "types": "index.d.ts",

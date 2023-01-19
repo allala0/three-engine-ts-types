@@ -1,4 +1,5 @@
 
+// declare module 'three';
 declare module 'three-engine'{
     import {
         Vector2,
@@ -95,7 +96,7 @@ declare module 'three-engine'{
     
         domElement: HTMLElement
     
-        protected setParameter(name: string, defaultValue: any, object: object): void;
+        protected setParameter(name: string, defaultValue: any, object?: object): void;
         protected loadCss(): void;
         protected setupDomElement(): void;
         protected addLoadingBar(): void;
@@ -140,7 +141,7 @@ declare module 'three-engine'{
         protected promptDebugInfo(): void;
         protected randomCameraPosition(): void;
         protected addDebugGuiFields(): void;
-        protected getTextureQuality(maxTextureQuality: string, maxMobileTextureQuality: string, textureQualitySizes: object): string;
-        protected dispose(): void;
+        getTextureQuality(maxTextureQuality?: string, maxMobileTextureQuality?: string, textureQualitySizes?: object): string;
+        dispose(): void;
     }
 }
