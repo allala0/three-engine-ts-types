@@ -1,4 +1,9 @@
+import {Vector2, Vector3, Vector4, Color, Euler} from 'three';
+
 declare module 'three-engine/tools/transitions/TransitionObject'{
+    
+    type transitionObject = number | Vector2 | Vector3 | Vector4 | Color | Euler;
+
     interface Parameters{
         function?(x: number): number;
         useFunctionSeparately?: boolean;
@@ -7,7 +12,7 @@ declare module 'three-engine/tools/transitions/TransitionObject'{
 
     interface Keyframe{
         progress: number,
-        value: any
+        value: transitionObject
     }
 
     export default class TransitionObject{
@@ -26,7 +31,7 @@ declare module 'three-engine/tools/transitions/TransitionObject'{
         getCurrentStartKeyframe(progress: number): Keyframe;
         getCurrentEndKeyframe(progress: number): Keyframe;
         getCurrentKeyframeProgress(progress: number): number;
-        getCurrentValue(progress: number): any;
+        getCurrentValue(progress: number): transitionObject;
 
         clone(): this;
     }

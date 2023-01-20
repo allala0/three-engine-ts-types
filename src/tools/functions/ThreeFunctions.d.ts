@@ -1,6 +1,5 @@
-
-import {Color, Vector2, Vector3, Vector4, Euler, Object3D, Camera} from 'three';
-
+// import {Color, Vector2, Vector3, Vector4, Euler, Object3D, Camera} from 'three';
+import 'three';
 declare global{
     interface Number{
         clone: () => this,
@@ -9,6 +8,8 @@ declare global{
 }
 
 declare module 'three'{
+    type axis = 'x' | 'y' | 'z';
+
     interface Color{
         moveTo(to: this, amount: number): this,
     }
@@ -29,14 +30,14 @@ declare module 'three'{
         moveTo(to: this, amount: number): this,
     }
 
-    interface Object3D{
+    export interface Object3D{
         getSurface(): number,
         getVolume(): number,
         getSize(): Vector3,
         centerGeometry(): this,
         center(): this,
-        normalize(axis?: 'x' | 'y' | 'z'): this,
-        setSize(size: number, axis?: 'x' | 'y' | 'z'): this,
+        normalize(axis?: axis): this,
+        setSize(size: number, axis?: axis): this,
         hoverCheck(mouse: Vector2, camera: Camera): boolean,
         dispose(disposeTextures?: boolean): void,
         setupClickable(clickableObject?: Object3D): void,

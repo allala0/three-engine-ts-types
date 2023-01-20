@@ -8,12 +8,12 @@ declare module 'three-engine/tools/transitions/Transition'{
         count?: number,
         delay?: number,
         forwards?: boolean,
-        callback?: Function,
-        callbackEveryIteration?: Function,
-        callbackEveryUpdate?: Function,
+        callback?: function,
+        callbackEveryIteration?: function,
+        callbackEveryUpdate?: function,
 
-        function?: Function,
-        useFunctionSeparately?: boolean,
+        function?: function,
+        usefunctionSeparately?: boolean,
     }
 
     export default class Transition{
@@ -28,12 +28,12 @@ declare module 'three-engine/tools/transitions/Transition'{
         count: number;
         delay: number;
         forwards: boolean;
-        callback: Function;
-        callbackEveryIteration: Function;
-        callbackEveryUpdate: Function;
+        callback: function;
+        callbackEveryIteration: function;
+        callbackEveryUpdate: function;
 
-        function: Function;
-        useFunctionSeparately: boolean;
+        function: function;
+        usefunctionSeparately: boolean;
 
         counter: number;
         progress: number;

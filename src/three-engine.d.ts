@@ -1,13 +1,8 @@
 declare module 'three-engine'{
-    import {
-        Vector2,
-        Vector3,
-        Clock,
-        Raycaster,
-        Scene,
-        WebGLRenderer
-    } from 'three';
+    import 'three';
     
+    type transitionObject = number | Vector2 | Vector3 | Vector4 | Color | Euler;
+
     interface Parameters{
         setup?: {
             DEV_MODE?: boolean,
@@ -19,7 +14,7 @@ declare module 'three-engine'{
             disableContextMenu?: boolean,
             enablePostprocessing?: boolean,
             enableLoadingBar?: boolean,
-            enableLoadingCircle?: boolean,
+            enableLoadingCircle?: boolean, 
             cameraType?: 'perspective' | 'orthographic',
             controlsType?: 'orbit' | 'trackball' | 'pointerlock' | 'arcball',
             enableControlsPan?: boolean,
@@ -84,7 +79,7 @@ declare module 'three-engine'{
         protected _cameraPosition: Vector3;
         protected _cameraZoom: number;
     
-        protected cameraTransition: Function;
+        protected cameraTransition: function;
         protected clock: Clock;
         protected mouse: Vector2;
         protected raycaster: Raycaster;
@@ -94,7 +89,7 @@ declare module 'three-engine'{
     
         domElement: HTMLElement
     
-        protected setParameter(name: string, defaultValue: any, object?: object): void;
+        protected setParameter(name: string, defaultValue: transitionObject, object?: object): void;
         protected loadCss(): void;
         protected setupDomElement(): void;
         protected addLoadingBar(): void;
