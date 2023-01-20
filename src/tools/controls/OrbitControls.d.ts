@@ -275,13 +275,13 @@ declare module 'three-engine/tools/controls/OrbitControls'{
         getDistance(): number;
 
         // EventDispatcher mixins
-        addEventListener(type: string, listener: (event: any) => void): void;
+        addEventListener(type: string, listener: (event: unknown) => void): void;
 
-        hasEventListener(type: string, listener: (event: any) => void): boolean;
+        hasEventListener(type: string, listener: (event: unknown) => void): boolean;
 
-        removeEventListener(type: string, listener: (event: any) => void): void;
+        removeEventListener(type: string, listener: (event: unknown) => void): void;
 
-        dispatchEvent(event: { type: string; target: any }): void;
+        dispatchEvent(event: { type: string; target: unknown }): void;
     }
 
     export class MapControls extends OrbitControls {

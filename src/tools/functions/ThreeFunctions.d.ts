@@ -1,5 +1,5 @@
-// import {Color, Vector2, Vector3, Vector4, Euler, Object3D, Camera} from 'three';
 import 'three';
+
 declare global{
     interface Number{
         clone: () => this,
